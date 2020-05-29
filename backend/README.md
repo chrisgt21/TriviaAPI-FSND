@@ -80,7 +80,7 @@ Here is a list of the error codes returned:
 
 * 400 – Bad request
 * 404 – Resource not found
-* 422 – Unprocessable
+* 422 – Not able to process
 * 500 – Internal server error
 
 Example of error message:
