@@ -157,10 +157,21 @@ def create_app(test_config=None):
 
   @app.route('/quizzes', methods=['POST'])
   def quiz():
+
+    def get_question():
+      new_ques = questions[random.randrange(0, total, 1)].format()
+      #print(new_ques)
+      return new_ques
+
+    def check_ques(prev_ques, ques):
+      used = False
+      for z in prev_ques:
+        if(z == ques['id']):
+          used = True
+      return used
     try:
       _obj = request.get_json()
       if ('quiz_category' in _obj):
-        #print(_obj)
         category = _obj['quiz_category']
         _id = category['id']
         prev_questions = _obj['previous_questions']
@@ -173,7 +184,16 @@ def create_app(test_config=None):
         total = len(questions)
         
         if total > 0:
-          new_ques = questions[random.randrange(0, total, 1)].format()  
+          new_ques = get_question()
+          while(check_ques(prev_questions, new_ques)):
+            print("getting new question...")
+            new_ques = get_question()
+
+            if(len(prev_questions) == total):
+              return jsonify({
+                'success': True,
+                'question': None
+              })
         else:
           new_ques = None
 
