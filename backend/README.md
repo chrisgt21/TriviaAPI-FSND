@@ -76,7 +76,14 @@ python test_flaskr.py
 
 ### Error Handling
 
-Errors are returned in the following json format:
+Here is a list of the error codes returned:
+
+* 400 – Bad request
+* 404 – Resource not found
+* 422 – Unprocessable
+* 500 – Internal server error
+
+Example of error message:
 
 ```json
       {
@@ -86,20 +93,13 @@ Errors are returned in the following json format:
       }
 ```
 
-Here is a list of the error codes returned:
-
-* 400 – Bad request
-* 404 – Resource not found
-* 422 – Unprocessable
-* 500 – Internal server error
-
 
 ### Endpoints
 
 #### GET /categories
 ##### Returns all categories
 
-- Sample:  `curl http://127.0.0.1:5000/categories`
+- Example:  `curl http://127.0.0.1:5000/categories`
 
 ```json
     {
@@ -118,7 +118,7 @@ Here is a list of the error codes returned:
 #### GET /questions
 ##### Returns all paginated questions
 
-- Sample: `curl http://127.0.0.1:5000/questions`
+- Example: `curl http://127.0.0.1:5000/questions`
 
 ```json
     {
@@ -210,7 +210,7 @@ Here is a list of the error codes returned:
 #### DELETE /questions/<int:id\>
 ##### Deletes a question by specifying the id
 
-- Sample: `curl http://127.0.0.1:5000/questions/26 -X DELETE`
+- Example: `curl http://127.0.0.1:5000/questions/26 -X DELETE`
 
 ```json
 {
@@ -240,7 +240,7 @@ Here is a list of the error codes returned:
 #### POST /questions
 ##### Creates a new question by passing a json object
 
-- Sample: `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{
+- Example: `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{
             "question": "Duke hit its highest scoring mark with a score of 136 vs. Virginia in which year?",
             "answer": "1965",
             "difficulty": 4,
@@ -257,7 +257,7 @@ Here is a list of the error codes returned:
 #### POST /questions
 ##### Search for keywords in questions
 
-- Sample: `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"searchTerm": "Duke"}'`
+- Example: `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"searchTerm": "Duke"}'`
 
 ```json
 {
@@ -277,7 +277,7 @@ Here is a list of the error codes returned:
 
 #### GET /categories/<int:id\>/questions
 ##### Gets questions by category using by passing the id of the category
-- Sample: `curl http://127.0.0.1:5000/categories/1/questions`
+- Example: `curl http://127.0.0.1:5000/categories/1/questions`
 
 ```json
 {
