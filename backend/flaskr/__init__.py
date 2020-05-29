@@ -99,7 +99,6 @@ def create_app(test_config=None):
 
     if('searchTerm' in _obj):
       searchTerm = _obj['searchTerm']
-      print(_obj)
       selection = Question.query.filter(Question.question.ilike(f'%{searchTerm}%')).all()
 
       if(len(selection) == 0):
@@ -114,7 +113,6 @@ def create_app(test_config=None):
       })
 
     else:
-      print(_obj)
       if not ('question' in _obj or 'answer' in _obj or 'difficulty' in _obj or 'category' in _obj):
         abort(422)
       ques = _obj['question']
@@ -160,7 +158,6 @@ def create_app(test_config=None):
 
     def get_question():
       new_ques = questions[random.randrange(0, total, 1)].format()
-      #print(new_ques)
       return new_ques
 
     def check_ques(prev_ques, ques):
@@ -186,7 +183,6 @@ def create_app(test_config=None):
         if total > 0:
           new_ques = get_question()
           while(check_ques(prev_questions, new_ques)):
-            print("getting new question...")
             new_ques = get_question()
 
             if(len(prev_questions) == total):
